@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>redteamX | Cybersecurity Club</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="custom-cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <div id="loader" class="loader-wrapper matrix-loader">
+    <div class="loader-content">
+      <div id="matrix-container" class="matrix-bg"></div>
+      <h1 class="glitch-text pixel-font" data-text="SYSTEM COMPROMISED">SYSTEM COMPROMISED</h1>
+      <p class="loader-subtext">Establishing secure connection...</p>
+    </div>
+  </div>
+
+  <div class="bg"></div>
+  <div class="stripes"></div>
+  <div class="interactive-bg"></div>
+
+  <main class="content-wrapper">
+    
+    <nav class="navbar">
+      <div class="nav-logo">
+        <a href="index.html" style="text-decoration:none;"><span style="font-weight:700;color:var(--accent-red);font-size:1.5rem;">red</span><span style="font-weight:300;color:var(--text-main);font-size:1.5rem;">teamX</span></a>
+      </div>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="operations.html">We Do</a>
+        <a href="team.html">Team</a>
+        <a href="cache.html">Cache</a>
+      </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="hero-section">
+      <div class="logo-wrap">
+        <div class="wordmark">
+          <span class="letter">R</span>
+          <span class="letter">E</span>
+          <span class="letter">D</span>
+          <span class="spacer"></span>
+          <span class="letter">T</span>
+          <span class="letter">E</span>
+          <span class="letter">A</span>
+          <span class="letter">M</span>
+        </div>
+
+        <div class="target-wrap">
+          <svg class="target-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <defs>
+              <filter id="xGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="6" result="b1"/>
+                <feGaussianBlur stdDeviation="2.5" result="b2"/>
+                <feMerge>
+                  <feMergeNode in="b1"/>
+                  <feMergeNode in="b2"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <filter id="ringF" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="1.5" result="b"/>
+                <feMerge>
+                  <feMergeNode in="b"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <circle class="ring-outer" cx="30" cy="30" r="28" stroke="rgba(255,255,255,0.07)" stroke-width="0.6" fill="none"/>
+            <circle class="ring-inner" cx="30" cy="30" r="22" stroke="#ff2020" stroke-width="0.9" fill="none" filter="url(#ringF)" opacity="0.6"/>
+            <circle cx="30" cy="30" r="17" fill="#131313"/>
+
+            <line x1="30" y1="8" x2="30" y2="52" stroke="white" stroke-width="0.3" opacity="0.05"/>
+            <line x1="8" y1="30" x2="52" y2="30" stroke="white" stroke-width="0.3" opacity="0.05"/>
+
+            <g class="tick" style="transform-origin: 30px 4px"><line x1="30" y1="1" x2="30" y2="8" stroke="#ff2020" stroke-width="1.3"/></g>
+            <g class="tick" style="transform-origin: 30px 56px"><line x1="30" y1="52" x2="30" y2="59" stroke="#ff2020" stroke-width="1.3"/></g>
+            <g class="tick" style="transform-origin: 4px 30px"><line x1="1" y1="30" x2="8" y2="30" stroke="#ff2020" stroke-width="1.3"/></g>
+            <g class="tick" style="transform-origin: 56px 30px"><line x1="52" y1="30" x2="59" y2="30" stroke="#ff2020" stroke-width="1.3"/></g>
+
+            <g class="x-glow-group" filter="url(#xGlow)">
+              <line class="x-line" x1="17" y1="17" x2="43" y2="43" stroke="#ff2020" stroke-width="3.4" stroke-linecap="round"/>
+              <line class="x-line" x1="43" y1="17" x2="17" y2="43" stroke="#ff2020" stroke-width="3.4" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="underline"></div>
+      </div>
+      
+      <p class="subtitle fade-in-up">The elite cybersecurity collective of PDEU</p>
+      
+      <a href="#vfs-terminal" class="cta-button fade-in-up-delay">
+        <span class="cta-text">Enter the System</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+      </a>
+
+      <!-- Embedded VFS Terminal -->
+      <div id="vfs-terminal" class="terminal-window fade-in-up-delay" style="margin-top: 5rem; width: 100%; max-width: 800px; text-align: left;">
+        <div class="terminal-header">
+          <div class="t-btn red"></div>
+          <div class="t-btn yellow"></div>
+          <div class="t-btn green"></div>
+          <div class="t-title" id="term-prefix" style="font-family:var(--font-pixel); letter-spacing:0.05em;">guest@redteamX:<span style="color:#4b83fb">~</span></div>
+        </div>
+        <div class="terminal-body" id="term-body" style="height: 300px; overflow-y: auto;">
+          <div class="term-history" id="term-history">
+            <p style="color:var(--accent-red); font-family:var(--font-pixel);">redteamX OS [Version 10.0.19045.3693]</p>
+            <p>(c) PDEU Collective. All rights reversed.</p>
+            <br/>
+            <p>Access granted. Type <span style="color:var(--accent-red)">help</span> for a list of executable commands.</p>
+          </div>
+          <div class="term-input-line">
+            <span style="color:#27c93f;font-family:var(--font-pixel);">guest@redteamX</span>:<span style="color:#4b83fb;font-family:var(--font-pixel);" id="term-prefix-text">~</span><span class="prompt" style="margin-left:5px;">$</span>
+            <input type="text" id="term-input" class="term-input" autocomplete="off" spellcheck="false" autofocus>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer/Contact -->
+    <footer class="footer reveal">
+      <div class="footer-content">
+        <h2 class="pixel-font">READY TO HACK?</h2>
+        <a href="mailto:hello@redteamx.pdeu" class="contact-link pixel-font">hello@redteamx.pdeu</a>
+        <div class="social-links">
+          <a href="#">Discord</a>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 redteamX PDEU. All rights reversed.</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

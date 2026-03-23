@@ -1,0 +1,124 @@
+.daemon-wrapper {
+  --daemon-accent: #ff2020;
+  --daemon-bg:     #080808;
+  --daemon-shell:  #141414;
+  --daemon-fg:     #e2e2e2;
+  --daemon-grid:   #0c0c0c;
+
+  background: var(--daemon-grid);
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-weight: 300;
+  color: var(--daemon-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.daemon-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-color: var(--daemon-grid);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 96px 96px, 96px 96px;
+  border-radius: inherit;
+}
+.daemon-bg::after {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0.88) 100%);
+}
+.daemon-stripes {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(255,255,255,0.007) 18px, rgba(255,255,255,0.007) 19px);
+}
+.daemon-scene {
+  position:relative; z-index:10;
+  display:flex; flex-direction:column; align-items:center;
+  width: 100%; height: 100%;
+}
+.daemon-monitor {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.daemon-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.daemon-dots { display:flex; gap:5px; }
+.daemon-dot { width:12px; height:12px; border-radius:50%; animation:d-pulse 2s ease-in-out infinite; cursor: pointer; }
+.daemon-dot-r { background:var(--daemon-accent); box-shadow:0 0 5px rgba(255,32,32,0.45); }
+.daemon-dot-a { background:rgba(255,176,0,0.5); animation-delay:0.3s; }
+.daemon-dot-g { background:rgba(255,255,255,0.18); animation-delay:0.6s; }
+@keyframes d-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+.daemon-bar-label { font-size:12px; letter-spacing:0.18em; color:rgba(255,255,255,0.18); font-family: var(--font-pixel); }
+.daemon-screen {
+  background: var(--daemon-bg);
+  border: none;
+  border-radius: 0; 
+  overflow: hidden; position: relative;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.7);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.daemon-screen::before {
+  content:''; position:absolute; inset:0; z-index:20; pointer-events:none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.13) 2px, rgba(0,0,0,0.13) 4px);
+}
+.daemon-screen::after {
+  content:''; position:absolute; inset:0; z-index:21; pointer-events:none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%);
+}
+.daemon-roll {
+  position:absolute; left:0; right:0; height:28px; top:-28px;
+  background: linear-gradient(180deg, transparent, rgba(255,32,32,0.04), transparent);
+  pointer-events:none; z-index:8;
+  animation: d-roll 8s linear infinite 1s;
+}
+@keyframes d-roll { from{top:-28px} to{top:110%} }
+.daemon-face {
+  width:100%; flex: 1; min-height: 120px;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--daemon-bg); position:relative;
+}
+#daemonCanvas { display:block; image-rendering:pixelated; image-rendering:-moz-crisp-edges; object-fit: contain; position:relative; z-index:5; width: 100%; height: 100%; max-height: 200px; }
+.daemon-hud { padding:12px 16px 14px; position:relative; z-index:5; background: var(--daemon-bg); }
+.daemon-hud-top {
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid rgba(255,32,32,0.15); padding-bottom:7px; margin-bottom:10px;
+}
+.daemon-title { font-size:12px; letter-spacing:0.22em; color:rgba(226,226,226,0.3); font-family: var(--font-pixel); }
+.daemon-title-accent { color:var(--daemon-accent); }
+.daemon-mood { font-size:12px; letter-spacing:0.2em; color:rgba(226,226,226,0.3); margin-left:10px; transition:color 0.3s; font-family: var(--font-pixel); }
+.daemon-status { font-size:11px; letter-spacing:0.12em; transition:color 0.3s; font-family: var(--font-pixel); }
+.daemon-speech {
+  font-size:13px; letter-spacing:0.04em; color:rgba(226,226,226,0.5); font-family: var(--font-pixel);
+  line-height:1.6; min-height:28px;
+  border-left:2px solid rgba(255,32,32,0.3); padding-left:10px;
+  margin-bottom:8px; transition:border-color 0.3s;
+}
+.daemon-divider { border:none; border-top:1px solid rgba(255,32,32,0.1); margin:7px 0; }
+.daemon-log { margin-bottom:6px; max-height:80px; overflow-y:auto; scrollbar-width:none; font-family: var(--font-pixel); }
+.daemon-log::-webkit-scrollbar { display:none; }
+.daemon-log-line { font-size:12px; line-height:1.8; color:rgba(226,226,226,0.28); letter-spacing:0.04em; display: flex; align-items: center; }
+.daemon-log-line .t  { color:rgba(226,226,226,0.16); margin-right: 8px;}
+.daemon-log-line .content { flex: 1; }
+.daemon-log-line .ok { color:var(--daemon-accent); opacity:0.8; margin-left: auto; }
+.daemon-log-line .er { color:#ff5f56; margin-left: auto; }
+.daemon-input-row { display:flex; align-items:center; gap:8px; }
+.daemon-prompt { font-size:13px; color:rgba(255,32,32,0.7); white-space:nowrap; font-family: var(--font-pixel); }
+.daemon-input {
+  flex:1; background:transparent; border:none; outline:none;
+  font-family:var(--font-pixel); font-weight:300;
+  font-size:14px; color:var(--daemon-fg); caret-color:var(--daemon-accent); letter-spacing:0.04em;
+}
+.daemon-input::placeholder { color:rgba(226,226,226,0.16); }
